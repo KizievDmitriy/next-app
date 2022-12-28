@@ -1,0 +1,28 @@
+.btn {
+  padding: 10px;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 14px;
+  line-height: 14px;
+  transition: 350ms ease-in-out all;
+}
+.primary {
+  color: #fff;
+  background-color: var(--primeryColor);
+}
+.primary:hover,
+.primary:focus {
+  background-color: var(--hoverBtn);
+}
+.secondary {
+  color: var(--color);
+  background-color: var(--background-color);
+  border: 1px solid var(--grayLight);
+}
+.secondary:hover,
+.secondary:focus {
+  background-color: var(--primeryColor);
+  color: #fff;
+}
