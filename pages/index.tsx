@@ -20,8 +20,8 @@ export default function Home() {
       </Head>
       <main>
         <Htag tag='h2'>Ntkejbgk</Htag>
-        <Button appearance='primary'>Узнать подробнее</Button>
-        <Button appearance='secondary'>Узнать подробнее</Button>
+        <Button appearance='primary' arrow='right'>Узнать подробнее</Button>
+        <Button appearance='secondary' arrow='down'>Узнать подробнее</Button>
       </main>
     </>
   )
