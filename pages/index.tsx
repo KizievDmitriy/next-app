@@ -2,6 +2,7 @@ import Head from 'next/head'
 // import Image from 'next/image'
 import { Montserrat } from '@next/font/google'
 import { Button, Htag, Ptag, Raiting, Tag } from '../components'
+import { useState } from "react"
 
 const montserrat = Montserrat({
   subsets: ['cyrillic'],
@@ -10,6 +11,8 @@ const montserrat = Montserrat({
 
 
 export default function Home() {
+  const [raiting, setRaiting] = useState<number>(4)
+
   return (
     <>
       <Head>
@@ -28,7 +31,7 @@ export default function Home() {
         <Tag>transparent</Tag>
         <Tag size='m' color='red'>red</Tag>
         <Tag size='m' color='primary'>primary</Tag>
-        <Raiting raiting={4} />
+        <Raiting raiting={raiting} isEditable setRaiting={setRaiting} />
       </main>
     </>
   )

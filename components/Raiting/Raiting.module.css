@@ -1,7 +1,13 @@
-.filled {
+.filled svg {
   fill: var(--primeryColor);
+  transition: fill 200ms ease-in-out;
+}
+.star svg {
+  margin-left: 5px;
+}
+.editeble {
+  cursor: pointer;
 }
 .star {
-  margin-left: 5px;
-  cursor: pointer;
+  display: inline-block;
 }
