@@ -4,11 +4,19 @@ const nextConfig = {
   webpack(config, option) {
     config.module.rules.push({
       loader: '@svgr/webpack',
-      option: {
+      issuer: /\.[jt]sx?$/,
+      options: {
         prettier: false,
         svgo: true,
         svgoConfig: {
-          plugins: [{ removeViewBox: false }]
+          plugins: [{
+            name: 'preset-default',
+            params: {
+              override: {
+                removeViewBox: false
+              }
+            }
+          }]
         },
         titleProp: true
       },
