@@ -12,6 +12,11 @@
   color: #fff;
   background-color: var(--primeryColor);
 }
+.primary svg,
+.secondary:hover svg,
+.secondary:focus svg {
+  fill: #fff;
+}
 .primary:hover,
 .primary:focus {
   background-color: var(--hoverBtn);
@@ -25,4 +30,13 @@
 .secondary:focus {
   background-color: var(--primeryColor);
   color: #fff;
+}
+
+.arrow {
+  display: inline-block;
+  margin-left: 10px;
+}
+.down {
+  transform: rotate(90deg);
+  transition: 350ms ease-in-out all;
 }

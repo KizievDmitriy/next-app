@@ -1,8 +1,10 @@
 import { ButtonProps } from "./ButtonProps"
 import s from "./Button.module.css"
 import cn from "classnames"
+import ArrowIcon from "./arrow.svg"
+// import Image from 'next/image'
 
-export const Button = ({ appearance, children, className, ...p }: ButtonProps): JSX.Element => {
+export const Button = ({ appearance, arrow = 'none', children, className, ...p }: ButtonProps): JSX.Element => {
     return (
         <button
             className={cn(s.btn, className, {
@@ -12,5 +14,8 @@ export const Button = ({ appearance, children, className, ...p }: ButtonProps): 
             {...p}
         >
             {children}
+            {arrow !== 'none' &&
+                <ArrowIcon className={cn(s.arrow, { [s.down]: arrow === 'down' })} />
+            }
         </button>);
 }
