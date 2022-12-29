@@ -1,7 +1,7 @@
 import Head from 'next/head'
 // import Image from 'next/image'
 import { Montserrat } from '@next/font/google'
-import { Button, Htag } from '../components'
+import { Button, Htag, Ptag, Tag } from '../components'
 
 const montserrat = Montserrat({
   subsets: ['cyrillic'],
@@ -22,6 +22,12 @@ export default function Home() {
         <Htag tag='h2'>Ntkejbgk</Htag>
         <Button appearance='primary' arrow='right'>Узнать подробнее</Button>
         <Button appearance='secondary' arrow='down'>Читать отзывы</Button>
+        <Ptag size='s'>Маленький</Ptag>
+        <Ptag size='m'>Средний</Ptag>
+        <Ptag size='l'>Большой</Ptag>
+        <Tag>transparent</Tag>
+        <Tag size='m' color='red'>red</Tag>
+        <Tag size='m' color='primary'>primary</Tag>
       </main>
     </>
   )
