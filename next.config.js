@@ -1,10 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  webpack(config) {
+  webpack(config, option) {
     config.module.rules.push({
+      loader: '@svgr/webpack',
+      option: {
+        prettier: false,
+        svgo: true,
+        svgoConfig: {
+          plugins: [{ removeViewBox: false }]
+        },
+        titleProp: true
+      },
       test: /\.svg$/,
-      use: ["@svgr/webpack"]
     });
 
     return config;

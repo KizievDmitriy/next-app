@@ -21,7 +21,7 @@ export default function Home() {
       <main>
         <Htag tag='h2'>Ntkejbgk</Htag>
         <Button appearance='primary' arrow='right'>Узнать подробнее</Button>
-        <Button appearance='secondary' arrow='down'>Узнать подробнее</Button>
+        <Button appearance='secondary' arrow='down'>Читать отзывы</Button>
       </main>
     </>
   )
