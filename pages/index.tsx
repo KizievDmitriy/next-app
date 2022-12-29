@@ -1,7 +1,7 @@
 import Head from 'next/head'
 // import Image from 'next/image'
 import { Montserrat } from '@next/font/google'
-import { Button, Htag, Ptag, Tag } from '../components'
+import { Button, Htag, Ptag, Raiting, Tag } from '../components'
 
 const montserrat = Montserrat({
   subsets: ['cyrillic'],
@@ -28,6 +28,7 @@ export default function Home() {
         <Tag>transparent</Tag>
         <Tag size='m' color='red'>red</Tag>
         <Tag size='m' color='primary'>primary</Tag>
+        <Raiting raiting={4} />
       </main>
     </>
   )

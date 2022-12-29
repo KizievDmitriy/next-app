@@ -1,0 +1,7 @@
+.filled {
+  fill: var(--primeryColor);
+}
+.star {
+  margin-left: 5px;
+  cursor: pointer;
+}
