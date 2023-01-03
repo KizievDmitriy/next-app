@@ -3,6 +3,8 @@ import Head from 'next/head'
 import { Montserrat } from '@next/font/google'
 import { Button, Htag, Ptag, Raiting, Tag } from '../components'
 import { useState } from "react"
+import { withLayout } from '../layout/Layout'
+
 
 const montserrat = Montserrat({
   subsets: ['cyrillic'],
@@ -10,7 +12,7 @@ const montserrat = Montserrat({
 })
 
 
-export default function Home() {
+function Home() {
   const [raiting, setRaiting] = useState<number>(4)
 
   return (
@@ -36,3 +38,5 @@ export default function Home() {
     </>
   )
 }
+
+export default withLayout(Home)
