@@ -4,6 +4,9 @@ import { Montserrat } from '@next/font/google'
 import { Button, Htag, Ptag, Raiting, Tag } from '../components'
 import { useState } from "react"
 import { withLayout } from '../layout/Layout'
+import axios from 'axios'
+import { GetStaticProps } from 'next'
+import { MenuItem } from '../interfaces/menu.interface'
 
 
 const montserrat = Montserrat({
@@ -12,7 +15,7 @@ const montserrat = Montserrat({
 })
 
 
-function Home() {
+function Home({ menu }: HomeProps) {
   const [raiting, setRaiting] = useState<number>(4)
 
   return (
@@ -34,9 +37,32 @@ function Home() {
         <Tag size='m' color='red'>red</Tag>
         <Tag size='m' color='primary'>primary</Tag>
         <Raiting raiting={raiting} isEditable setRaiting={setRaiting} />
+        <ul>
+          {menu.map(m => (<li key={m._id.secondCategory}>{m._id.secondCategory}</li>))}
+        </ul>
       </main>
     </>
   )
 }
 
-export default withLayout(Home)
+export default withLayout(Home);
+
+export const getStaticProps: GetStaticProps<HomeProps> = async () => {
+
+  const firstCategory = 0;
+  const { data: menu } = await axios.post<MenuItem[]>(process.env.NEXT_PUBLIC_DOMAIN + '/api/top-page/find', {
+    firstCategory
+  });
+
+  return {
+    props: {
+      menu,
+      firstCategory
+    }
+  }
+}
+
+interface HomeProps extends Record<string, unknown> {
+  menu: MenuItem[];
+  firstCategory: number;
+}
