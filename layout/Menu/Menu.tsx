@@ -41,7 +41,7 @@ export const Menu = (): JSX.Element => {
 
     const buildSecondLavel = (menuItem: FirstLavelMenuItem) => {
         return (
-            <div>
+            <div className={s.secondBlock}>
                 {menu.map(m => (
                     <div key={m._id.secondCategory}>
                         <div className={s.secondLavel}>{m._id.secondCategory}</div>
@@ -60,7 +60,7 @@ export const Menu = (): JSX.Element => {
         return (
             pages.map(p => (
                 <a key={p.category} href={`/${route}/${p.alias}`} className={cn(s.thirdtLavel, {
-                    [s.thirdtLavelActive]: true
+                    [s.thirdtLavelActive]: false
                 })}>
                     {p.category}
                 </a>)
