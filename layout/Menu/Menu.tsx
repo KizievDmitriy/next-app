@@ -8,6 +8,8 @@ import BooksIcon from "./icons/books.svg"
 import ServiceIcon from "./icons/service.svg"
 import ProductsIcon from "./icons/products.svg"
 import { TopLevelCategory } from "../../interfaces/page.interface"
+import Link from "next/link"
+import { useRouter } from "next/router"
 
 const firstLavelMenu: FirstLavelMenuItem[] = [
     { route: 'courses', name: 'Курсы', icon: <CoursesIcon />, id: TopLevelCategory.Courses },
@@ -18,20 +20,31 @@ const firstLavelMenu: FirstLavelMenuItem[] = [
 
 export const Menu = (): JSX.Element => {
     const { menu, setMenu, firstCategory } = useContext(AppContext);
+    const router = useRouter();
+    const openSecondLavel = (secondCategory: string) => {
+        setMenu && setMenu(menu.map(m => {
+            if (m._id.secondCategory === secondCategory) {
+                m.isOpened = !m.isOpened
+            }
+            return m;
+        }))
+    }
 
     const buildFirstLavel = () => {
         return (
             <>
                 {firstLavelMenu.map(m => (
                     <div key={m.route}>
-                        <a href={`/${m.route}`}>
-                            <div className={cn(s.firstLavel, {
-                                [s.firstLavelAcive]: m.id === firstCategory
-                            })}>
-                                {m.icon}
-                                <span>{m.name}</span>
-                            </div>
-                        </a>
+                        <Link href={`/${m.route}`} legacyBehavior>
+                            <a>
+                                <div className={cn(s.firstLavel, {
+                                    [s.firstLavelAcive]: m.id === firstCategory
+                                })}>
+                                    {m.icon}
+                                    <span>{m.name}</span>
+                                </div>
+                            </a>
+                        </Link>
                         {m.id === firstCategory && buildSecondLavel(m)}
                     </div>
                 ))}
@@ -42,16 +55,23 @@ export const Menu = (): JSX.Element => {
     const buildSecondLavel = (menuItem: FirstLavelMenuItem) => {
         return (
             <div className={s.secondBlock}>
-                {menu.map(m => (
-                    <div key={m._id.secondCategory}>
-                        <div className={s.secondLavel}>{m._id.secondCategory}</div>
-                        <div className={cn(s.secondLavelBlock, {
-                            [s.secondLavelBlockOpened]: m.isOpened
-                        })}>
-                            {buildThirdtLavel(m.pages, menuItem.route)}
+                {menu.map(m => {
+                    if (m.pages.map(p => p.alias).includes(router.asPath.split('/')[2])) {
+                        m.isOpened = true;
+                    }
+                    return (
+                        <div key={m._id.secondCategory}>
+                            <div className={s.secondLavel} onClick={() => openSecondLavel(m._id.secondCategory)}>
+                                {m._id.secondCategory}
+                            </div>
+                            <div className={cn(s.secondLavelBlock, {
+                                [s.secondLavelBlockOpened]: m.isOpened
+                            })}>
+                                {buildThirdtLavel(m.pages, menuItem.route)}
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    );
+                })}
             </div>
         );
     };
@@ -59,11 +79,13 @@ export const Menu = (): JSX.Element => {
     const buildThirdtLavel = (pages: PageItem[], route: string) => {
         return (
             pages.map(p => (
-                <a key={p.category} href={`/${route}/${p.alias}`} className={cn(s.thirdtLavel, {
-                    [s.thirdtLavelActive]: false
-                })}>
-                    {p.category}
-                </a>)
+                <Link href={`/${route}/${p.alias}`} key={p.category} legacyBehavior>
+                    <a className={cn(s.thirdtLavel, {
+                        [s.thirdtLavelActive]: `/${route}/${p.alias}` === router.asPath
+                    })}>
+                        {p.category}
+                    </a>
+                </Link>)
             )
         );
     };

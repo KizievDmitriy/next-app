@@ -27,10 +27,10 @@
   margin-bottom: 5px;
   cursor: pointer;
   text-transform: uppercase;
-  color: var(--color);
+  color: var(--accentColor);
   font-weight: 500;
-  font-size: 14px;
-  line-height: 17px;
+  font-size: 12px;
+  line-height: 16px;
 }
 .secondBlock {
   margin-top: 15px;
@@ -39,17 +39,19 @@
   border-left: 1px solid var(--accentColor);
 }
 .secondLavelBlock {
+  display: none;
 }
 .secondLavelBlockOpened {
+  display: block;
 }
 .thirdtLavel {
   display: block;
   margin-bottom: 10px;
   cursor: pointer;
-  color: var(--accentColor);
-  font-weight: 300;
-  font-size: 12px;
-  line-height: 16px;
+  color: var(--color);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 15px;
 }
 .secondLavelBlockOpened:last-child {
   margin-bottom: 20px;
