@@ -3,6 +3,7 @@ import cn from "classnames"
 import { HhDataProps } from "./HhDateProps";
 import { Card } from "../Card/Card";
 import StarIcon from "./star.svg"
+import { priceRu } from "../../helpers/helpers";
 
 export const HhData = ({ count, juniorSalary, middleSalary, seniorSalary }: HhDataProps): JSX.Element => {
     return (
@@ -14,7 +15,7 @@ export const HhData = ({ count, juniorSalary, middleSalary, seniorSalary }: HhDa
             <Card className={s.salary}>
                 <div>
                     <div className={s.title}>Начальный</div>
-                    <div className={s.salaryValue}>{juniorSalary}</div>
+                    <div className={s.salaryValue}>{priceRu(juniorSalary)}</div>
                     <div className={s.rate}>
                         <StarIcon className={s.filled} />
                         <StarIcon />
@@ -23,7 +24,7 @@ export const HhData = ({ count, juniorSalary, middleSalary, seniorSalary }: HhDa
                 </div>
                 <div>
                     <div className={s.title}>Средний</div>
-                    <div className={s.salaryValue}>{middleSalary}</div>
+                    <div className={s.salaryValue}>{priceRu(middleSalary)}</div>
                     <div className={s.rate}>
                         <StarIcon className={s.filled} />
                         <StarIcon className={s.filled} />
@@ -32,7 +33,7 @@ export const HhData = ({ count, juniorSalary, middleSalary, seniorSalary }: HhDa
                 </div>
                 <div>
                     <div className={s.title}>Профессионал</div>
-                    <div className={s.salaryValue}>{seniorSalary}</div>
+                    <div className={s.salaryValue}>{priceRu(seniorSalary)}</div>
                     <div className={s.rate}>
                         <StarIcon className={s.filled} />
                         <StarIcon className={s.filled} />
