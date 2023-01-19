@@ -1,6 +1,6 @@
-.wrapper {
+/* .wrapper {
   margin-top: 40px;
-}
+} */
 .title {
   display: grid;
   grid-template-columns: auto 1fr auto;
