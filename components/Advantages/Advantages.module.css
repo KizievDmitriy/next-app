@@ -1,0 +1,17 @@
+.adv {
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  gap: 20px 30px;
+  margin-bottom: 40px;
+}
+
+.title {
+  align-self: center;
+  font-weight: bold;
+}
+
+.vline {
+  border-left: 1px solid var(--grayLight);
+  margin-top: 20px;
+  transform: rotate(90deg);
+}
