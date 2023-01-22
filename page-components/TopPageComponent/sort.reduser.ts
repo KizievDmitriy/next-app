@@ -5,7 +5,7 @@ export type SortActions = { type: SortEnum.Price } | { type: SortEnum.Raiting };
 
 export interface SortReducerState {
     sort: SortEnum;
-    product: ProductModel[];
+    products: ProductModel[];
 }
 
 export const sortReducer = (state: SortReducerState, action: SortActions): SortReducerState => {
@@ -13,12 +13,12 @@ export const sortReducer = (state: SortReducerState, action: SortActions): SortR
         case SortEnum.Raiting:
             return {
                 sort: SortEnum.Raiting,
-                product: state.product.sort((a, b) => a.initialRating > b.initialRating ? -1 : 1)
+                products: state.products.sort((a, b) => a.initialRating > b.initialRating ? -1 : 1)
             };
         case SortEnum.Price:
             return {
                 sort: SortEnum.Price,
-                product: state.product.sort((a, b) => a.price > b.price ? 1 : -1)   //от меньшего к большему
+                products: state.products.sort((a, b) => a.price > b.price ? 1 : -1)   //от меньшего к большему
             };
         default:
             throw new Error('Что-то пошло не так...');
