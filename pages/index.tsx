@@ -1,12 +1,13 @@
 import Head from 'next/head'
 // import Image from 'next/image'
 import { Montserrat } from '@next/font/google'
-import { Button, Htag, Ptag, Raiting, Tag } from '../components'
+import { Button, Htag, Input, Ptag, Raiting, Tag, Textarea } from '../components'
 import { useState } from "react"
 import { withLayout } from '../layout/Layout'
 import axios from 'axios'
 import { GetStaticProps } from 'next'
 import { MenuItem } from '../interfaces/menu.interface'
+
 
 
 const montserrat = Montserrat({
@@ -37,6 +38,9 @@ function Home({ menu }: HomeProps) {
         <Tag size='m' color='red'>red</Tag>
         <Tag size='m' color='primary'>primary</Tag>
         <Raiting raiting={raiting} isEditable setRaiting={setRaiting} />
+        <Input placeholder='text' />
+        <Textarea placeholder='text' />
+
       </main>
     </>
   )
