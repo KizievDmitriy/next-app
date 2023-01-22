@@ -3,11 +3,11 @@ export interface ProductCharacteristic {
     name: string;
 }
 
-export interface ReviewModel{
+export interface ReviewModel {
     _id: string;
     name: string;
     title: string;
-    description: string;
+    describtion: string;
     rating: number;
     createdAt: Date;
 }
@@ -21,7 +21,7 @@ export interface ProductModel {
     price: string;
     credit: number;
     oldPrice: number;
-    description: string;
+    describtion: string;
     characteristics: ProductCharacteristic[];
     createdAt: Date;
     updatedAt: Date;

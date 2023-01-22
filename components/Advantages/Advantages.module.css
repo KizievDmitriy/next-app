@@ -1,8 +1,9 @@
 .adv {
   display: grid;
   grid-template-columns: 50px 1fr;
-  gap: 20px 30px;
-  margin-bottom: 40px;
+  gap: 10px 20px;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .title {
@@ -11,7 +12,7 @@
 }
 
 .vline {
-  border-left: 1px solid var(--grayLight);
-  margin-top: 20px;
-  transform: rotate(90deg);
+  width: 1px;
+  margin-left: 50%;
+  border: 1px solid var(--grayLight);
 }
