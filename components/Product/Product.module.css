@@ -2,11 +2,12 @@
   display: grid;
   grid-template-columns:
     [start] 70px [logoend] 30px [titlestart] calc(50% - 100px)
-    [middle] 1fr [pricestart] auto [pricend] 40px [creditstart] auto [creditend] 40px [raitstart] auto [raitend] [end];
+    [middle] 1fr [pricestart] auto [pricend] 40px [creditstart] auto [creditend] 40px [raitstart] auto [end];
   margin-bottom: 30px;
   padding: 30px;
 }
 .logo {
+  display: block;
   grid-column: start / logoend;
   grid-row: 1 / span 2;
 }
@@ -19,6 +20,7 @@
   grid-column: pricestart / pricend;
 }
 .credit,
+.creditTitle,
 .priceCredit {
   grid-column: creditstart / creditend;
 }
