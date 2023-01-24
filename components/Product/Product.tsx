@@ -50,7 +50,7 @@ export const Product = ({ product, className, ...p }: ProductProps): JSX.Element
                     <div>{product.disadvantages}</div>
                 </div>}
             </div>
-            <Divider className={s.hr} />
+            <Divider className={cn(s.hr, s.hr2)} />
             <div className={s.actions}>
                 <Button appearance="primary">Узнать потробнее</Button>
                 <Button appearance="secondary" arrow="right">Читать отзывы</Button>

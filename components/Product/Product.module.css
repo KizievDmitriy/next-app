@@ -107,3 +107,124 @@
 .charDots {
   border-bottom: 1px dashed var(--accentColor);
 }
+@media screen and (max-width: 1320px) {
+  .product {
+    grid-template-columns: 70px 30px auto 40px auto 40px 1fr;
+    grid-template-areas:
+      "logo . title title title title title"
+      "logo . tags tags tags tags tags"
+      "price price  price . credit . raiting"
+      "priceTitle priceTitle  priceTitle . creditTitle . rewie"
+      "hr hr hr hr hr hr hr"
+      "description description description description description description description"
+      "feature feature feature feature feature feature feature"
+      "advWrapper advWrapper advWrapper advWrapper advWrapper advWrapper advWrapper"
+      "hr2 hr2 hr2 hr2 hr2 hr2 hr2"
+      "actions actions actions actions actions actions actions";
+  }
+  .logo {
+    grid-area: logo;
+    /* margin-bottom: 20px; */
+  }
+  .title {
+    grid-area: title;
+    margin-bottom: 5px;
+  }
+  .tags {
+    grid-area: tags;
+    margin-bottom: 20px;
+  }
+  .price {
+    grid-area: price;
+  }
+  .credit {
+    grid-area: credit;
+  }
+  .logo {
+    grid-area: logo;
+  }
+  .raiting {
+    grid-area: raiting;
+  }
+  .priceTitle {
+    grid-area: priceTitle;
+  }
+  .creditTitle {
+    grid-area: creditTitle;
+  }
+  .rewie {
+    grid-area: rewie;
+  }
+  .hr {
+    grid-area: hr;
+  }
+  .description {
+    grid-area: description;
+  }
+  .creditTitle {
+    grid-area: creditTitle;
+  }
+  .creditTitle {
+    grid-area: creditTitle;
+  }
+  .feature {
+    grid-area: feature;
+    margin-bottom: 20px;
+  }
+  .advWrapper {
+    grid-area: advWrapper;
+  }
+  .hr2 {
+    grid-area: hr2;
+  }
+  .actions {
+    grid-area: actions;
+  }
+}
+@media screen and (max-width: 830px) {
+  .product {
+    grid-template-columns: 70px 30px 1fr;
+    grid-template-areas:
+      "logo . title"
+      "logo . tags"
+      "priceTitle priceTitle  price"
+      "creditTitle creditTitle credit"
+      "rewie rewie raiting"
+      "hr hr hr "
+      "description description description"
+      "feature feature feature"
+      "advWrapper advWrapper advWrapper"
+      "hr2 hr2 hr2"
+      "actions actions actions";
+  }
+  .price {
+    margin-bottom: 10px;
+  }
+  .credit {
+    margin-bottom: 10px;
+  }
+  .raiting {
+    margin-bottom: 10px;
+  }
+}
+@media screen and (max-width: 390px) {
+  .product {
+    grid-template-columns: 70px 30px 1fr;
+    grid-template-areas:
+      "logo . title"
+      "logo . tags"
+      "priceTitle priceTitle  price"
+      "creditTitle creditTitle credit"
+      "rewie rewie raiting"
+      "hr hr hr "
+      "description description description"
+      "feature feature feature"
+      "advWrapper advWrapper advWrapper"
+      "hr2 hr2"
+      "actions";
+  }
+  .actions button:last-of-type {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+}
