@@ -6,7 +6,7 @@ import { Card } from "../Card/Card";
 import { Raiting } from "../Raiting/Raiting";
 import { Tag } from "../Tag/Tag";
 import { Button } from "../Button/Button";
-import { priceRu } from "../../helpers/helpers";
+import { declOfNum, priceRu } from "../../helpers/helpers";
 import { Divider } from "../Divider/Divider";
 
 export const Product = ({ product, className, ...p }: ProductProps): JSX.Element => {
@@ -28,7 +28,7 @@ export const Product = ({ product, className, ...p }: ProductProps): JSX.Element
             <div className={s.tags}>{product.categories.map(c => <Tag className={s.tag} color="transparen" key={c}>{c}</Tag>)}</div>
             <div className={s.priceTitle}>Цена</div>
             <div className={s.creditTitle}>Кредит</div>
-            <div className={s.rewie}>{product.reviewCount} отзывов</div>
+            <div className={s.rewie}>{product.reviewCount} {declOfNum(product.reviewCount, ['отзыв', 'отзыва', 'отзывов'])}</div>
             <Divider className={s.hr} />
             <div className={s.description}>{product.description}</div>
             <div className={s.feature}>фичи</div>
