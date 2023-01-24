@@ -31,7 +31,15 @@ export const Product = ({ product, className, ...p }: ProductProps): JSX.Element
             <div className={s.rewie}>{product.reviewCount} {declOfNum(product.reviewCount, ['отзыв', 'отзыва', 'отзывов'])}</div>
             <Divider className={s.hr} />
             <div className={s.description}>{product.description}</div>
-            <div className={s.feature}>фичи</div>
+            <div className={s.feature}>
+                {product.characteristics.map(c => (
+                    <div className={s.characteristics} key={c.name}>
+                        <span className={s.charName}>{c.name}</span>
+                        <span className={s.charDots}></span>
+                        <span>{c.value}</span>
+                    </div>
+                ))}
+            </div>
             <div className={s.advWrapper}>
                 {product.advantages && <div className={s.advantages}>
                     <div className={s.advTitle}>Преимущества</div>
