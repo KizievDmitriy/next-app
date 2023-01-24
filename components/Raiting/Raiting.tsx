@@ -40,7 +40,6 @@ export const Raiting = ({ isEditable = false, raiting, setRaiting, children, ...
                     onMouseLeave={() => changeDisplay(raiting)}
                     onClick={() => { onClick(i + 1) }}>
                     <StarIcon
-
                         tabIndex={isEditable ? 0 : -1}
                         onKeyDown={(e: KeyboardEvent<SVGAElement>) => isEditable && handleSpace(i + 1, e)}
                     />

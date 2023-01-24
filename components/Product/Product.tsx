@@ -8,53 +8,73 @@ import { Tag } from "../Tag/Tag";
 import { Button } from "../Button/Button";
 import { declOfNum, priceRu } from "../../helpers/helpers";
 import { Divider } from "../Divider/Divider";
+import { useState } from "react";
+import { Review } from "../Review/Review";
+import { ReviewForm } from "../ReviewForm/ReviewForm";
 
 export const Product = ({ product, className, ...p }: ProductProps): JSX.Element => {
     const src = process.env.NEXT_PUBLIC_DOMAIN + product.image;
-
+    const [isRewiewOpen, setIsRewiewOpen] = useState<boolean>(false);
 
     return (
-        <Card className={cn(s.product)} color='white'>
-            <div className={s.logo}>
-                <Image src={src} alt={product.title} width={70} height={70} />
-            </div>
-            <div className={s.title}>{product.title}</div>
-            <div className={s.price}>
-                {priceRu(product.price) + ' '}
-                {product.oldPrice && <Tag color="green">{priceRu(product.price - product.oldPrice)}</Tag>}
-            </div>
-            <div className={s.credit}>{priceRu(product.credit)}/<span>мес</span></div>
-            <div className={s.raiting}><Raiting raiting={product.rewiewAvg ?? product.initialRating} /></div>
-            <div className={s.tags}>{product.categories.map(c => <Tag className={s.tag} color="transparen" key={c}>{c}</Tag>)}</div>
-            <div className={s.priceTitle}>Цена</div>
-            <div className={s.creditTitle}>Кредит</div>
-            <div className={s.rewie}>{product.reviewCount} {declOfNum(product.reviewCount, ['отзыв', 'отзыва', 'отзывов'])}</div>
-            <Divider className={s.hr} />
-            <div className={s.description}>{product.description}</div>
-            <div className={s.feature}>
-                {product.characteristics.map(c => (
-                    <div className={s.characteristics} key={c.name}>
-                        <span className={s.charName}>{c.name}</span>
-                        <span className={s.charDots}></span>
-                        <span>{c.value}</span>
-                    </div>
-                ))}
-            </div>
-            <div className={s.advWrapper}>
-                {product.advantages && <div className={s.advantages}>
-                    <div className={s.advTitle}>Преимущества</div>
-                    <div>{product.advantages}</div>
-                </div>}
-                {product.disadvantages && <div className={s.disadvantages}>
-                    <div className={s.advTitle}>Недостатки</div>
-                    <div>{product.disadvantages}</div>
-                </div>}
-            </div>
-            <Divider className={cn(s.hr, s.hr2)} />
-            <div className={s.actions}>
-                <Button appearance="primary">Узнать потробнее</Button>
-                <Button appearance="secondary" arrow="right">Читать отзывы</Button>
-            </div>
-        </Card>
+        <>
+            <Card className={cn(s.product)} color='white'>
+                <div className={s.logo}>
+                    <Image src={src} alt={product.title} width={70} height={70} />
+                </div>
+                <div className={s.title}>{product.title}</div>
+                <div className={s.price}>
+                    {priceRu(product.price) + ' '}
+                    {product.oldPrice && <Tag color="green">{priceRu(product.price - product.oldPrice)}</Tag>}
+                </div>
+                <div className={s.credit}>{priceRu(product.credit)}/<span>мес</span></div>
+                <div className={s.raiting}><Raiting raiting={product.rewiewAvg ?? product.initialRating} /></div>
+                <div className={s.tags}>{product.categories.map(c => <Tag className={s.tag} color="transparen" key={c}>{c}</Tag>)}</div>
+                <div className={s.priceTitle}>Цена</div>
+                <div className={s.creditTitle}>Кредит</div>
+                <div className={s.rewie}>{product.reviewCount} {declOfNum(product.reviewCount, ['отзыв', 'отзыва', 'отзывов'])}</div>
+                <Divider className={s.hr} />
+                <div className={s.description}>{product.description}</div>
+                <div className={s.feature}>
+                    {product.characteristics.map(c => (
+                        <div className={s.characteristics} key={c.name}>
+                            <span className={s.charName}>{c.name}</span>
+                            <span className={s.charDots}></span>
+                            <span>{c.value}</span>
+                        </div>
+                    ))}
+                </div>
+                <div className={s.advWrapper}>
+                    {product.advantages && <div className={s.advantages}>
+                        <div className={s.advTitle}>Преимущества</div>
+                        <div>{product.advantages}</div>
+                    </div>}
+                    {product.disadvantages && <div className={s.disadvantages}>
+                        <div className={s.advTitle}>Недостатки</div>
+                        <div>{product.disadvantages}</div>
+                    </div>}
+                </div>
+                <Divider className={cn(s.hr, s.hr2)} />
+                <div className={s.actions}>
+                    <Button appearance="primary">Узнать потробнее</Button>
+                    <Button
+                        appearance="secondary"
+                        arrow={!isRewiewOpen ? 'right' : 'down'}
+                        onClick={() => setIsRewiewOpen(!isRewiewOpen)}>Читать отзывы</Button>
+                </div>
+            </Card>
+            <Card color='blue' className={cn(s.rewiew, {
+                [s.opened]: isRewiewOpen,
+                [s.closed]: !isRewiewOpen
+            })}>
+                {product.reviewCount === 0 ? 'Пока нет отзывов' : (product.reviews.map(r => (
+                    <>
+                        <Review key={r._id} review={r} />
+                        <Divider />
+                    </>
+                )))}
+                <ReviewForm productId={product._id} />
+            </Card>
+        </>
     );
 }

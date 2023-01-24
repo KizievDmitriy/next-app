@@ -35,8 +35,8 @@
 .arrow {
   display: inline-block;
   margin-left: 10px;
+  transition: 350ms ease-in-out all;
 }
 .down {
   transform: rotate(90deg);
-  transition: 350ms ease-in-out all;
 }

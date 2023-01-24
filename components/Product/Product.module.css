@@ -107,6 +107,15 @@
 .charDots {
   border-bottom: 1px dashed var(--accentColor);
 }
+.closed {
+  overflow: hidden;
+  max-height: 0;
+  padding: 0;
+}
+.opened {
+  max-height: auto;
+  padding: 30px;
+}
 @media screen and (max-width: 1320px) {
   .product {
     grid-template-columns: 70px 30px auto 40px auto 40px 1fr;
@@ -124,7 +133,6 @@
   }
   .logo {
     grid-area: logo;
-    /* margin-bottom: 20px; */
   }
   .title {
     grid-area: title;
@@ -181,6 +189,7 @@
     grid-area: actions;
   }
 }
+
 @media screen and (max-width: 830px) {
   .product {
     grid-template-columns: 70px 30px 1fr;
