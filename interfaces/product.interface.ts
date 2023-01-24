@@ -18,7 +18,7 @@ export interface ProductModel {
     tags: string[];
     title: string;
     link: string;
-    price: string;
+    price: number;
     credit: number;
     oldPrice: number;
     description: string;
@@ -31,7 +31,6 @@ export interface ProductModel {
     reviews: ReviewModel[];
     reviewCount: number;
     rewiewAvg?: number;
-    advantages: string;
-    disadvantages: string;
-
+    advantages?: string;
+    disadvantages?: string;
 }

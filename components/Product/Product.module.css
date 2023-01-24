@@ -3,7 +3,7 @@
   grid-template-columns:
     [start] 70px [logoend] 30px [titlestart] calc(50% - 100px)
     [middle] 1fr [pricestart] auto [pricend] 40px [creditstart] auto [creditend] 40px [raitstart] auto [end];
-  margin-bottom: 30px;
+  margin-top: 30px;
   padding: 30px;
 }
 .logo {
@@ -38,4 +38,57 @@
 }
 .advWrapper {
   grid-column: middle / end;
+}
+.tag {
+  margin-bottom: 5px;
+}
+.logo img {
+  border-radius: 5px;
+}
+.title {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 27px;
+  align-self: flex-end;
+}
+.price,
+.credit {
+  font-size: 20px;
+  line-height: 27px;
+  align-self: flex-end;
+}
+.raiting {
+  align-self: flex-end;
+}
+.priceTitle,
+.creditTitle,
+.rewie {
+  font-size: 14px;
+  line-height: 19px;
+}
+.description {
+  font-size: 16px;
+  line-height: 24px;
+  margin-bottom: 15px;
+}
+.actions button:last-of-type {
+  margin-left: 20px;
+}
+.advWrapper {
+  font-size: 16px;
+  line-height: 22px;
+}
+.advTitle {
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.advantages {
+  border-left: 2px solid var(--green);
+  padding-left: 15px;
+  margin-bottom: 20px;
+}
+.disadvantages {
+  border-left: 2px solid var(--red);
+  padding-left: 15px;
 }
