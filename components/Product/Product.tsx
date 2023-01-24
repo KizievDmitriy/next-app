@@ -16,7 +16,7 @@ export const Product = ({ product, className, ...p }: ProductProps): JSX.Element
     return (
         <Card className={cn(s.product)} color='white'>
             <div className={s.logo}>
-                <Image loader={() => src} src={src} alt={product.title} width={70} height={70} unoptimized />
+                <Image src={src} alt={product.title} width={70} height={70} />
             </div>
             <div className={s.title}>{product.title}</div>
             <div className={s.price}>
