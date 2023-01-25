@@ -6,19 +6,50 @@ import { Raiting } from "../Raiting/Raiting";
 import { Button } from "../Button/Button";
 import { Textarea } from "../Textarea/Textarea";
 import CloseSubmitIcon from "./closeSubmit.svg"
+import { useForm, Controller } from "react-hook-form";
+import { IReviewForm } from "./ReviewForm.interface";
 
 export const ReviewForm = ({ productId, className, ...p }: ReviewFormProps): JSX.Element => {
+    const { register, control, handleSubmit, formState: { errors } } = useForm<IReviewForm>();
 
+    const onSubmit = (data: IReviewForm) => {
+
+    }
     return (
-        <>
+        <form onSubmit={handleSubmit(onSubmit)}>
             <div className={cn(s.reviewForm, className)} {...p}>
-                <Input placeholder="Имя" />
-                <Input placeholder="Заголовок отзыва" className={s.title} />
+                <Input
+                    {...register('name', { required: { value: true, message: 'Заполните имя' } })}
+                    placeholder="Имя"
+                    error={errors.name}
+                />
+                <Input
+                    {...register('title', { required: { value: true, message: 'Заполните заголовок' } })}
+                    placeholder="Заголовок отзыва"
+                    error={errors.title}
+                    className={s.title}
+                />
                 <div className={s.raitingWrapper}>
                     <span>Оценка:</span>
-                    <Raiting raiting={0} />
+                    <Controller
+                        control={control}
+                        name='raiting'
+                        render={({ field }) => (
+                            <Raiting
+                                isEditable
+                                raiting={field.value}
+                                ref={field.ref}
+                                setRaiting={field.onChange}
+                            />
+                        )}
+                    />
                 </div>
-                <Textarea className={s.textarea} placeholder="Текст отзыва" />
+                <Textarea
+                    {...register('description', { required: { value: true, message: 'Заполните поле' } })}
+                    className={s.textarea}
+                    placeholder="Текст отзыва"
+                    error={errors.description}
+                />
                 <div className={s.submitWrapper}>
                     <Button appearance="primary" className={cn(className, s.btn)}>Отправить</Button>
                     <span>* Перед публикацией отзыв пройдет предварительную модерацию и проверку</span>
@@ -28,6 +59,6 @@ export const ReviewForm = ({ productId, className, ...p }: ReviewFormProps): JSX
                 <b>Ваш отзыв отправлен, он будет опубликован после проверки.</b>
                 <CloseSubmitIcon className={s.close} />
             </div>
-        </>
+        </form>
     );
 }

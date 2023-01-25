@@ -1,34 +1,20 @@
+/* eslint-disable react/display-name */
 import { RaitingProps } from "./RaitingProps"
 import s from "./Raiting.module.css"
 import cn from "classnames"
 import StarIcon from "./star.svg"
-import { KeyboardEvent, useEffect, useState } from "react"
+import { ForwardedRef, forwardRef, KeyboardEvent, useEffect, useState } from "react"
 
-export const Raiting = ({ isEditable = false, raiting, setRaiting, children, ...p }: RaitingProps): JSX.Element => {
+
+export const Raiting = forwardRef(({ isEditable = false, raiting, setRaiting, children, ...p }: RaitingProps, ref: ForwardedRef<HTMLDivElement>): JSX.Element => {
     const [raitingArr, setRaitingArr] = useState<JSX.Element[]>(new Array(5).fill(<></>));
 
-    const changeDisplay = (i: number) => {
-        if (!isEditable) {
-            return;
-        }
-        constructRaiting(i);
-    }
-    const onClick = (i: number) => {
-        if (!isEditable || !setRaiting) {
-            return;
-        }
-        setRaiting(i);
-    }
-
-    const handleSpace = (i: number, e: KeyboardEvent<SVGAElement>) => {
-        if (e.code !== 'Space' || !setRaiting) {
-            return;
-        }
-        setRaiting(i);
-    }
+    useEffect(() => {
+        constructRaiting(raiting);
+    }, [raiting]);
 
     const constructRaiting = (currentRaiting: number) => {
-        const updatedArr = raitingArr.map((r: JSX.Element, i: number) => {
+        const updatedArr = raitingArr.map((_r: JSX.Element, i: number) => {
             return (
                 <div key={i}
                     className={
@@ -44,19 +30,37 @@ export const Raiting = ({ isEditable = false, raiting, setRaiting, children, ...
                         onKeyDown={(e: KeyboardEvent<SVGAElement>) => isEditable && handleSpace(i + 1, e)}
                     />
                 </div>
-
             )
         });
         setRaitingArr(updatedArr);
+    };
+
+
+
+    const changeDisplay = (i: number) => {
+        if (!isEditable) {
+            return;
+        }
+        constructRaiting(i);
     }
 
-    useEffect(() => {
-        constructRaiting(raiting);
-    }, [raiting]);
+    const onClick = (i: number) => {
+        if (!isEditable || !setRaiting) {
+            return;
+        }
+        setRaiting(i);
+    }
+
+    const handleSpace = (i: number, e: KeyboardEvent<SVGAElement>) => {
+        if (e.code !== 'Space' || !setRaiting) {
+            return;
+        }
+        setRaiting(i);
+    }
 
     return (
-        <div {...p}>
+        <div {...p} ref={ref}>
             {raitingArr.map((r, i) => (<span key={i}>{r}</span>))}
         </div>
     )
-}
+});
