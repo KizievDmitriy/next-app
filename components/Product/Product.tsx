@@ -8,16 +8,24 @@ import { Tag } from "../Tag/Tag";
 import { Button } from "../Button/Button";
 import { declOfNum, priceRu } from "../../helpers/helpers";
 import { Divider } from "../Divider/Divider";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Review } from "../Review/Review";
 import { ReviewForm } from "../ReviewForm/ReviewForm";
 
 export const Product = ({ product, className, ...p }: ProductProps): JSX.Element => {
     const src = process.env.NEXT_PUBLIC_DOMAIN + product.image;
     const [isRewiewOpen, setIsRewiewOpen] = useState<boolean>(false);
+    const rewieRef = useRef<HTMLDivElement>(null);
+    const scrollToRewie = () => {
+        setIsRewiewOpen(true)
+        rewieRef.current?.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        })
+    }
 
     return (
-        <>
+        <div className={className} {...p}>
             <Card className={cn(s.product)} color='white'>
                 <div className={s.logo}>
                     <Image src={src} alt={product.title} width={70} height={70} />
@@ -32,7 +40,9 @@ export const Product = ({ product, className, ...p }: ProductProps): JSX.Element
                 <div className={s.tags}>{product.categories.map(c => <Tag className={s.tag} color="transparen" key={c}>{c}</Tag>)}</div>
                 <div className={s.priceTitle}>Цена</div>
                 <div className={s.creditTitle}>Кредит</div>
-                <div className={s.rewie}>{product.reviewCount} {declOfNum(product.reviewCount, ['отзыв', 'отзыва', 'отзывов'])}</div>
+                <div className={s.rewie}>
+                    <a href="#ref" onClick={scrollToRewie}>{product.reviewCount} {declOfNum(product.reviewCount, ['отзыв', 'отзыва', 'отзывов'])}</a>
+                </div>
                 <Divider className={s.hr} />
                 <div className={s.description}>{product.description}</div>
                 <div className={s.feature}>
@@ -66,7 +76,9 @@ export const Product = ({ product, className, ...p }: ProductProps): JSX.Element
             <Card color='blue' className={cn(s.rewiew, {
                 [s.opened]: isRewiewOpen,
                 [s.closed]: !isRewiewOpen
-            })}>
+            })}
+                ref={rewieRef}
+            >
                 {product.reviewCount === 0 ? 'Пока нет отзывов' : (product.reviews.map(r => (
                     <div key={r._id}>
                         <Review review={r} />
@@ -75,6 +87,6 @@ export const Product = ({ product, className, ...p }: ProductProps): JSX.Element
                 )))}
                 <ReviewForm productId={product._id} />
             </Card>
-        </>
+        </div>
     );
 }

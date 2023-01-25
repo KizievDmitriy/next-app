@@ -66,6 +66,9 @@
   font-size: 14px;
   line-height: 19px;
 }
+.rewie a {
+  color: var(--primeryColor);
+}
 .description {
   font-size: 16px;
   line-height: 24px;
