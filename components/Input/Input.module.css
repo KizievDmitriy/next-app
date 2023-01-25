@@ -19,7 +19,7 @@
 }
 .errMessage {
   position: absolute;
-  bottom: -5px;
+  bottom: -22px;
   left: 15px;
   color: red;
   font-weight: bold;

@@ -11,3 +11,16 @@
 .star {
   display: inline-block;
 }
+.wrapper {
+  position: relative;
+}
+.error svg {
+  stroke: red;
+}
+.errMessage {
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  color: red;
+  font-weight: bold;
+}

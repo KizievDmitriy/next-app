@@ -5,8 +5,7 @@ import cn from "classnames"
 import StarIcon from "./star.svg"
 import { ForwardedRef, forwardRef, KeyboardEvent, useEffect, useState } from "react"
 
-
-export const Raiting = forwardRef(({ isEditable = false, raiting, setRaiting, children, ...p }: RaitingProps, ref: ForwardedRef<HTMLDivElement>): JSX.Element => {
+export const Raiting = forwardRef(({ isEditable = false, error, raiting, setRaiting, children, ...p }: RaitingProps, ref: ForwardedRef<HTMLDivElement>): JSX.Element => {
     const [raitingArr, setRaitingArr] = useState<JSX.Element[]>(new Array(5).fill(<></>));
 
     useEffect(() => {
@@ -59,8 +58,11 @@ export const Raiting = forwardRef(({ isEditable = false, raiting, setRaiting, ch
     }
 
     return (
-        <div {...p} ref={ref}>
-            {raitingArr.map((r, i) => (<span key={i}>{r}</span>))}
+        <div {...p} ref={ref} className={cn(s.wrapper, {
+            [s.error]: error
+        })}>
+            {raitingArr.map((r, i) => (<span key={i} className={error && s.error}>{r}</span>))}
+            {error && <span className={s.errMessage}>{error.message}</span>}
         </div>
     )
 });
