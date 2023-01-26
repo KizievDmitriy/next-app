@@ -1,9 +1,10 @@
-import CoursesIcon from "./icons/course.svg"
-import BooksIcon from "./icons/books.svg"
-import ServiceIcon from "./icons/service.svg"
-import ProductsIcon from "./icons/products.svg"
-import { TopLevelCategory } from "../interfaces/page.interface"
-import { FirstLavelMenuItem } from "../interfaces/menu.interface"
+import CoursesIcon from "./icons/course.svg";
+import BooksIcon from "./icons/books.svg";
+import ServiceIcon from "./icons/service.svg";
+import ProductsIcon from "./icons/products.svg";
+import { TopLevelCategory } from "../interfaces/page.interface";
+import { FirstLavelMenuItem } from "../interfaces/menu.interface";
+import { useEffect, useState } from "react";
 
 export const firstLavelMenu: FirstLavelMenuItem[] = [
     { route: 'courses', name: 'Курсы', icon: <CoursesIcon />, id: TopLevelCategory.Courses },
@@ -18,3 +19,22 @@ export const declOfNum = (number: number, titles: [string, string, string]): str
     const cases = [2, 0, 1, 1, 1, 2]
     return titles[(number % 100 > 4 && number % 100 < 20) ? 2 : cases[(number % 10 < 5) ? number % 10 : 5]];
 }
+
+export const useScrollY = (): number => {
+
+    const isBrowser = typeof window !== 'undefined';
+
+    const [scrollY, setScrollY] = useState<number>(0);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScrollY = isBrowser ? window.scrollY : 0;
+            setScrollY(currentScrollY);
+        }
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
+
+    }, [isBrowser]);
+
+    return scrollY;
+};
