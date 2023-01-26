@@ -1,15 +1,44 @@
-import s from "./Menu.module.css"
-import cn from "classnames"
-import { useContext } from "react"
-import { AppContext } from "../../context/app.context"
-import { FirstLavelMenuItem, PageItem } from "../../interfaces/menu.interface"
-import Link from "next/link"
-import { useRouter } from "next/router"
-import { firstLavelMenu } from "../../helpers/helpers"
+import s from "./Menu.module.css";
+import cn from "classnames";
+import { useContext } from "react";
+import { AppContext } from "../../context/app.context";
+import { FirstLavelMenuItem, PageItem } from "../../interfaces/menu.interface";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { firstLavelMenu } from "../../helpers/helpers";
+import { motion } from "framer-motion";
 
 export const Menu = (): JSX.Element => {
     const { menu, setMenu, firstCategory } = useContext(AppContext);
     const router = useRouter();
+
+    const variants = {
+        visible: {
+            marginBottom: 15,
+            transition: {
+                when: 'beforeChildren',
+                staggerChildren: 0.1
+            }
+
+        },
+        hidden: {
+            marginBottom: 0
+        }
+    }
+
+    const variantsChildren = {
+        visible: {
+            opacity: 1,
+            height: 29,
+            transform: `translate(10%, 0)`
+        },
+        hidden: {
+            opacity: 0,
+            height: 0,
+            transform: `translate(30%, 0)`
+        }
+    }
+
     const openSecondLavel = (secondCategory: string) => {
         setMenu && setMenu(menu.map(m => {
             if (m._id.secondCategory === secondCategory) {
@@ -53,11 +82,15 @@ export const Menu = (): JSX.Element => {
                             <div className={s.secondLavel} onClick={() => openSecondLavel(m._id.secondCategory)}>
                                 {m._id.secondCategory}
                             </div>
-                            <div className={cn(s.secondLavelBlock, {
-                                [s.secondLavelBlockOpened]: m.isOpened
-                            })}>
+                            <motion.div
+                                className={cn(s.secondLavelBlock)}
+                                layout
+                                variants={variants}
+                                initial={m.isOpened ? 'visible' : 'hidden'}
+                                animate={m.isOpened ? 'visible' : 'hidden'}
+                            >
                                 {buildThirdtLavel(m.pages, menuItem.route)}
-                            </div>
+                            </motion.div>
                         </div>
                     );
                 })}
@@ -68,13 +101,17 @@ export const Menu = (): JSX.Element => {
     const buildThirdtLavel = (pages: PageItem[], route: string) => {
         return (
             pages.map(p => (
-                <Link href={`/${route}/${p.alias}`} key={p._id} legacyBehavior>
-                    <a className={cn(s.thirdtLavel, {
-                        [s.thirdtLavelActive]: `/${route}/${p.alias}` === router.asPath
-                    })}>
-                        {p.category}
-                    </a>
-                </Link>)
+                <motion.div key={p._id}
+                    variants={variantsChildren}
+                >
+                    <Link href={`/${route}/${p.alias}`} legacyBehavior>
+                        <a className={cn(s.thirdtLavel, {
+                            [s.thirdtLavelActive]: `/${route}/${p.alias}` === router.asPath
+                        })}>
+                            {p.category}
+                        </a>
+                    </Link>
+                </motion.div>)
             )
         );
     };

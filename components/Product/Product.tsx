@@ -8,11 +8,13 @@ import { Tag } from "../Tag/Tag";
 import { Button } from "../Button/Button";
 import { declOfNum, priceRu } from "../../helpers/helpers";
 import { Divider } from "../Divider/Divider";
-import { useRef, useState } from "react";
+import { ForwardedRef, forwardRef, useRef, useState } from "react";
 import { Review } from "../Review/Review";
 import { ReviewForm } from "../ReviewForm/ReviewForm";
+import { motion } from "framer-motion";
 
-export const Product = ({ product, className, ...p }: ProductProps): JSX.Element => {
+// eslint-disable-next-line react/display-name
+export const Product = motion(forwardRef(({ product, className, ...p }: ProductProps, ref: ForwardedRef<HTMLDivElement>): JSX.Element => {
     const src = process.env.NEXT_PUBLIC_DOMAIN + product.image;
     const [isRewiewOpen, setIsRewiewOpen] = useState<boolean>(false);
     const rewieRef = useRef<HTMLDivElement>(null);
@@ -25,7 +27,7 @@ export const Product = ({ product, className, ...p }: ProductProps): JSX.Element
     }
 
     return (
-        <div className={className} {...p}>
+        <div className={className} {...p} ref={ref}>
             <Card className={cn(s.product)} color='white'>
                 <div className={s.logo}>
                     <Image src={src} alt={product.title} width={70} height={70} />
@@ -89,4 +91,4 @@ export const Product = ({ product, className, ...p }: ProductProps): JSX.Element
             </Card>
         </div>
     );
-}
+}));
