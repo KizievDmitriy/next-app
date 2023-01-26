@@ -18,6 +18,15 @@ export const Product = motion(forwardRef(({ product, className, ...p }: ProductP
     const src = process.env.NEXT_PUBLIC_DOMAIN + product.image;
     const [isRewiewOpen, setIsRewiewOpen] = useState<boolean>(false);
     const rewieRef = useRef<HTMLDivElement>(null);
+
+    const variants = {
+        visible: {
+            opacity: 1,
+            heigt: 'auto'
+        },
+        hidden: { opacity: 0, heigt: 0 }
+    }
+
     const scrollToRewie = () => {
         setIsRewiewOpen(true)
         rewieRef.current?.scrollIntoView({
@@ -75,20 +84,21 @@ export const Product = motion(forwardRef(({ product, className, ...p }: ProductP
                         onClick={() => setIsRewiewOpen(!isRewiewOpen)}>Читать отзывы</Button>
                 </div>
             </Card>
-            <Card color='blue' className={cn(s.rewiew, {
-                [s.opened]: isRewiewOpen,
-                [s.closed]: !isRewiewOpen
-            })}
-                ref={rewieRef}
+            <motion.div
+                animate={isRewiewOpen ? 'visible' : 'hidden'}
+                variants={variants}
+                initial='hidden'
             >
-                {product.reviewCount === 0 ? 'Пока нет отзывов' : (product.reviews.map(r => (
-                    <div key={r._id}>
-                        <Review review={r} />
-                        <Divider />
-                    </div>
-                )))}
-                <ReviewForm productId={product._id} />
-            </Card>
+                <Card color='blue' className={s.rewiew} ref={rewieRef}>
+                    {product.reviewCount === 0 ? 'Пока нет отзывов' : (product.reviews.map(r => (
+                        <div key={r._id}>
+                            <Review review={r} />
+                            <Divider />
+                        </div>
+                    )))}
+                    <ReviewForm productId={product._id} />
+                </Card>
+            </motion.div>
         </div>
     );
 }));
