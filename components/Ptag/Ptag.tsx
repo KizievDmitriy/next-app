@@ -1,6 +1,6 @@
-import { PtagProps } from "./PtagProps"
-import s from "./Ptag.module.css"
-import cn from "classnames"
+import { PtagProps } from "./PtagProps";
+import s from "./Ptag.module.css";
+import cn from "classnames";
 
 export const Ptag = ({ size = 'm', children, className, ...p }: PtagProps): JSX.Element => {
     return (

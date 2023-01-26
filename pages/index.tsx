@@ -1,12 +1,11 @@
-import Head from 'next/head'
-// import Image from 'next/image'
-import { Montserrat } from '@next/font/google'
-import { Button, Htag, Input, Ptag, Raiting, Tag, Textarea } from '../components'
-import { useState } from "react"
-import { withLayout } from '../layout/Layout'
-import axios from 'axios'
-import { GetStaticProps } from 'next'
-import { MenuItem } from '../interfaces/menu.interface'
+import Head from "next/head";
+import { Montserrat } from "@next/font/google";
+import { Button, Htag, Input, Ptag, Raiting, Tag, Textarea } from "../components";
+import { useState } from "react";
+import { withLayout } from "../layout/Layout";
+import axios from "axios";
+import { GetStaticProps } from "next";
+import { MenuItem } from "../interfaces/menu.interface";
 
 
 

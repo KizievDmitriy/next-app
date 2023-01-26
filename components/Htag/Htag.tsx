@@ -1,5 +1,5 @@
-import { HtagProps } from "./HtagProps"
-import s from "./Htag.module.css"
+import { HtagProps } from "./HtagProps";
+import s from "./Htag.module.css";
 
 export const Htag = ({ tag, children }: HtagProps): JSX.Element => {
     switch (tag) {

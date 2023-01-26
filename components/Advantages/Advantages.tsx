@@ -1,6 +1,6 @@
 import { AdvantagesProps } from "./AdvantagesProps";
-import CheckIcon from "./check.svg"
-import s from "./Advantages.module.css"
+import CheckIcon from "./check.svg";
+import s from "./Advantages.module.css";
 
 
 

@@ -1,7 +1,7 @@
-import { withLayout } from '../layout/Layout'
-import axios from 'axios'
-import { GetStaticProps } from 'next'
-import { MenuItem } from '../interfaces/menu.interface'
+import { withLayout } from "../layout/Layout";
+import axios from "axios";
+import { GetStaticProps } from "next";
+import { MenuItem } from "../interfaces/menu.interface";
 
 
 function Search(): JSX.Element {

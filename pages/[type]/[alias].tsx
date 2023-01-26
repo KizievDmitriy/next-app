@@ -1,12 +1,12 @@
-import { withLayout } from '../../layout/Layout'
-import { MenuItem } from '../../interfaces/menu.interface'
-import axios from 'axios'
-import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next'
-import { TopLevelCategory, TopPageModel } from '../../interfaces/page.interface'
-import { ParsedUrlQuery } from 'querystring'
-import { ProductModel } from '../../interfaces/product.interface'
-import { firstLavelMenu } from '../../helpers/helpers'
-import { TopPageComponent } from '../../page-components'
+import { withLayout } from "../../layout/Layout";
+import { MenuItem } from "../../interfaces/menu.interface";
+import axios from "axios";
+import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
+import { TopLevelCategory, TopPageModel } from "../../interfaces/page.interface";
+import { ParsedUrlQuery } from "querystring";
+import { ProductModel } from "../../interfaces/product.interface";
+import { firstLavelMenu } from "../../helpers/helpers";
+import { TopPageComponent } from "../../page-components";
 
 function TopPage({ firstCategory, page, products }: TopPageProps) {
 

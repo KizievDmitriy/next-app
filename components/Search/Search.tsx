@@ -1,11 +1,11 @@
-import { SearchProps } from "./SearchProps"
-import s from "./Search.module.css"
-import cn from "classnames"
-import { Input } from "../Input/Input"
-import { Button } from "../Button/Button"
-import { useState } from "react"
-import SearchIcon from "./search.svg"
-import { useRouter } from "next/router"
+import { SearchProps } from "./SearchProps";
+import s from "./Search.module.css";
+import cn from "classnames";
+import { Input } from "../Input/Input";
+import { Button } from "../Button/Button";
+import { useState } from "react";
+import SearchIcon from "./search.svg";
+import { useRouter } from "next/router";
 
 export const Search = ({ className, ...p }: SearchProps): JSX.Element => {
     const [search, setSearch] = useState<string>('');

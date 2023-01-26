@@ -1,6 +1,6 @@
-import { CardProps } from "./CardProps"
-import s from "./Card.module.css"
-import cn from "classnames"
+import { CardProps } from "./CardProps";
+import s from "./Card.module.css";
+import cn from "classnames";
 import { ForwardedRef, forwardRef } from "react";
 
 // eslint-disable-next-line react/display-name

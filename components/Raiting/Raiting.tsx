@@ -1,8 +1,8 @@
 /* eslint-disable react/display-name */
-import { RaitingProps } from "./RaitingProps"
-import s from "./Raiting.module.css"
-import cn from "classnames"
-import StarIcon from "./star.svg"
+import { RaitingProps } from "./RaitingProps";
+import s from "./Raiting.module.css";
+import cn from "classnames";
+import StarIcon from "./star.svg";
 import { ForwardedRef, forwardRef, KeyboardEvent, useEffect, useState } from "react"
 
 export const Raiting = forwardRef(({ isEditable = false, error, raiting, setRaiting, children, ...p }: RaitingProps, ref: ForwardedRef<HTMLDivElement>): JSX.Element => {

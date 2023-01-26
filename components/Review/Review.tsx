@@ -1,10 +1,10 @@
-import { ReviewProps } from "./ReviewProps"
-import UserIcon from "./user.svg"
-import s from "./Review.module.css"
-import cn from "classnames"
-import { format } from "date-fns"
-import { ru } from "date-fns/locale"
-import { Raiting } from "../Raiting/Raiting"
+import { ReviewProps } from "./ReviewProps";
+import UserIcon from "./user.svg";
+import s from "./Review.module.css";
+import cn from "classnames";
+import { format } from "date-fns";
+import { ru } from "date-fns/locale";
+import { Raiting } from "../Raiting/Raiting";
 
 export const Review = ({ review, className, ...p }: ReviewProps): JSX.Element => {
     const { name, title, description, createdAt, rating } = review;

@@ -1,6 +1,6 @@
-import { InputProps } from "./InputProps"
-import s from "./Input.module.css"
-import cn from "classnames"
+import { InputProps } from "./InputProps";
+import s from "./Input.module.css";
+import cn from "classnames";
 import { ForwardedRef, forwardRef } from "react";
 
 // eslint-disable-next-line react/display-name

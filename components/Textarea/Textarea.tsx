@@ -1,6 +1,6 @@
-import { TextareaProps } from "./TextareaProps"
-import s from "./Textarea.module.css"
-import cn from "classnames"
+import { TextareaProps } from "./TextareaProps";
+import s from "./Textarea.module.css";
+import cn from "classnames";
 import { ForwardedRef, forwardRef } from "react";
 
 // eslint-disable-next-line react/display-name

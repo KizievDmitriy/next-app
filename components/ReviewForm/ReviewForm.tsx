@@ -1,6 +1,6 @@
-import { ReviewFormProps } from "./ReviewFormProps"
-import s from "./ReviewForm.module.css"
-import cn from "classnames"
+import { ReviewFormProps } from "./ReviewFormProps";
+import s from "./ReviewForm.module.css";
+import cn from "classnames";
 import { Input } from "../Input/Input";
 import { Raiting } from "../Raiting/Raiting";
 import { Button } from "../Button/Button";

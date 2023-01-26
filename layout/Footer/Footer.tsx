@@ -1,7 +1,7 @@
-import { FooterProps } from "./FooterProps"
-import s from "./Footer.module.css"
-import cn from "classnames"
-import { format } from 'date-fns'
+import { FooterProps } from "./FooterProps";
+import s from "./Footer.module.css";
+import cn from "classnames";
+import { format } from "date-fns";
 
 export const Footer = ({ className, ...p }: FooterProps): JSX.Element => {
     return (
