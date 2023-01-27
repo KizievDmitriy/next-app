@@ -25,15 +25,16 @@ export const Product = motion(forwardRef(({ product, className, ...p }: ProductP
             height: 'auto'
         },
         hidden: { opacity: 0, height: 0 }
-    }
+    };
 
     const scrollToRewie = () => {
-        setIsRewiewOpen(true)
+        setIsRewiewOpen(true);
         rewieRef.current?.scrollIntoView({
             behavior: 'smooth',
             block: 'start'
-        })
-    }
+        });
+        rewieRef.current?.focus();
+    };
 
     return (
         <div className={className} {...p} ref={ref}>
@@ -89,7 +90,7 @@ export const Product = motion(forwardRef(({ product, className, ...p }: ProductP
                 variants={variants}
                 initial='hidden'
             >
-                <Card color='blue' className={s.rewiew} ref={rewieRef}>
+                <Card color='blue' className={s.rewiew} ref={rewieRef} tabIndex={0}>
                     {product.reviewCount === 0 ? 'Пока нет отзывов' : (product.reviews.map(r => (
                         <div key={r._id}>
                             <Review review={r} />

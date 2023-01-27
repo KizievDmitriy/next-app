@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/display-name */
 import { RaitingProps } from "./RaitingProps";
 import s from "./Raiting.module.css";
@@ -51,7 +52,7 @@ export const Raiting = forwardRef(({ isEditable = false, error, raiting, setRait
     }
 
     const handleSpace = (i: number, e: KeyboardEvent<SVGAElement>) => {
-        if (e.code !== 'Space' || !setRaiting) {
+        if (e.code !== 'Enter' || !setRaiting) {
             return;
         }
         setRaiting(i);
