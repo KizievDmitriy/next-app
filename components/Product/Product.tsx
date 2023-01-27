@@ -22,9 +22,9 @@ export const Product = motion(forwardRef(({ product, className, ...p }: ProductP
     const variants = {
         visible: {
             opacity: 1,
-            heigt: 'auto'
+            height: 'auto'
         },
-        hidden: { opacity: 0, heigt: 0 }
+        hidden: { opacity: 0, height: 0 }
     }
 
     const scrollToRewie = () => {

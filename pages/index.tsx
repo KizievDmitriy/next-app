@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { Montserrat } from "@next/font/google";
-import { Button, Htag, Input, Ptag, Raiting, Tag, Textarea } from "../components";
+import { Button, DynamicButtonIcon, Htag, Input, Ptag, Raiting, Tag, Textarea } from "../components";
 import { useState } from "react";
 import { withLayout } from "../layout/Layout";
 import axios from "axios";
@@ -39,7 +39,9 @@ function Home({ menu }: HomeProps) {
         <Raiting raiting={raiting} isEditable setRaiting={setRaiting} />
         <Input placeholder='text' />
         <Textarea placeholder='text' />
-
+        <div>
+          <DynamicButtonIcon appearance="secondary" icon="cansel" />
+        </div>
       </main>
     </>
   )
