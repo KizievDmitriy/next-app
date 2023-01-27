@@ -29,13 +29,11 @@ export const Menu = (): JSX.Element => {
     const variantsChildren = {
         visible: {
             opacity: 1,
-            height: 29,
-            transform: `translate(10%, 0)`
+            height: 29
         },
         hidden: {
             opacity: 0,
-            height: 0,
-            transform: `translate(30%, 0)`
+            height: 0
         }
     }
 

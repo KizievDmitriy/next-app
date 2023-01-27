@@ -34,7 +34,7 @@ export const Search = ({ className, ...p }: SearchProps): JSX.Element => {
                 placeholder="Поиск..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                onKeyDown={handleKeyDown}
+                onKeyDown={() => handleKeyDown}
             />
             <Button
                 appearance="primary"

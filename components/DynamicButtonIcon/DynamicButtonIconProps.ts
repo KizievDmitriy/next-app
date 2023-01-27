@@ -1,4 +1,3 @@
-import { type } from "os";
 import { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
 import cansel from "./cansel.svg";
 import menu from "./menu.svg";
