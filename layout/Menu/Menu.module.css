@@ -28,7 +28,6 @@
   color: var(--accentColor);
   font-weight: 500;
   font-size: 12px;
-  line-height: 16px;
 }
 .secondBlock {
   margin-top: 15px;
@@ -48,5 +47,5 @@
   color: var(--color);
   font-weight: 500;
   font-size: 14px;
-  line-height: 15px;
+  outline-offset: -1px;
 }
