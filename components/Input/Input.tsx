@@ -14,7 +14,7 @@ export const Input = forwardRef(({ className, error, ...p }: InputProps, ref: Fo
                 ref={ref}
                 {...p}
             />
-            {error && <span className={s.errMessage}>{error.message}</span>}
+            {error && <span role='alert' className={s.errMessage}>{error.message}</span>}
         </div>
     )
 });

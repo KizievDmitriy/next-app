@@ -28,6 +28,12 @@
   padding: 20px;
   margin-top: 20px;
 }
+.error {
+  position: relative;
+  background-color: #ec0202c2;
+  padding: 20px;
+  margin-top: 20px;
+}
 .close {
   position: absolute;
   top: 10px;

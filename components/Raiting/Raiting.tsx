@@ -24,7 +24,14 @@ export const Raiting = forwardRef(({ isEditable = false, error, raiting, setRait
                         })}
                     onMouseEnter={() => changeDisplay(i + 1)}
                     onMouseLeave={() => changeDisplay(raiting)}
-                    onClick={() => { onClick(i + 1) }}>
+                    onClick={() => { onClick(i + 1) }}
+                    role={isEditable ? 'slider' : ''}
+                    aria-label={isEditable ? 'Укажите рейтинг кнопкой ентер,для увеличения или уменьшения используйте кнопку таб' : ('рейтинг' + raiting)}
+                    aria-invalid={error ? true : false}
+                    aria-valuenow={raiting}
+                    aria-valuemax={5}
+                    aria-valuemin={1}
+                >
                     <StarIcon
                         tabIndex={isEditable ? 0 : -1}
                         onKeyDown={(e: KeyboardEvent<SVGAElement>) => isEditable && handleSpace(i + 1, e)}
@@ -63,7 +70,7 @@ export const Raiting = forwardRef(({ isEditable = false, error, raiting, setRait
             [s.error]: error
         })}>
             {raitingArr.map((r, i) => (<span key={i} className={error && s.error}>{r}</span>))}
-            {error && <span className={s.errMessage}>{error.message}</span>}
+            {error && <span role='alert' className={s.errMessage}>{error.message}</span>}
         </div>
     )
 });

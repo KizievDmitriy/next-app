@@ -88,7 +88,9 @@ export const Product = motion(forwardRef(({ product, className, ...p }: ProductP
                         aria-label="Читать отзывы"
                         appearance="secondary"
                         arrow={!isRewiewOpen ? 'right' : 'down'}
-                        onClick={() => setIsRewiewOpen(!isRewiewOpen)}>Читать отзывы</Button>
+                        onClick={() => setIsRewiewOpen(!isRewiewOpen)}
+                        aria-expanded={!isRewiewOpen}
+                    >Читать отзывы</Button>
                 </div>
             </Card>
             <motion.div
