@@ -50,7 +50,7 @@ export const Menu = (): JSX.Element => {
         return (
             <>
                 {firstLavelMenu.map(m => (
-                    <nav key={m.route}>
+                    <div key={m.route}>
                         <Link href={`/${m.route}`} legacyBehavior>
                             <a>
                                 <div className={cn(s.firstLavel, {
@@ -62,7 +62,7 @@ export const Menu = (): JSX.Element => {
                             </a>
                         </Link>
                         {m.id === firstCategory && buildSecondLavel(m)}
-                    </nav>
+                    </div>
                 ))}
             </>
         );
@@ -126,8 +126,8 @@ export const Menu = (): JSX.Element => {
     };
 
     return (
-        <div className={s.menu}>
+        <nav className={s.menu} role='navigation'>
             {buildFirstLavel()}
-        </div>
+        </nav>
     )
 }

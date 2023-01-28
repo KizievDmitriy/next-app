@@ -53,7 +53,7 @@ export const ReviewForm = ({ productId, className, ...p }: ReviewFormProps): JSX
                     error={errors.description}
                 />
                 <div className={s.submitWrapper}>
-                    <Button appearance="primary" className={cn(className, s.btn)}>Отправить</Button>
+                    <Button appearance="primary" type="button" aria-label="Отправить" className={cn(className, s.btn)}>Отправить</Button>
                     <span>* Перед публикацией отзыв пройдет предварительную модерацию и проверку</span>
                 </div>
             </div>

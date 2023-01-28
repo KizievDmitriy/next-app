@@ -78,8 +78,14 @@ export const Product = motion(forwardRef(({ product, className, ...p }: ProductP
                 </div>
                 <Divider className={cn(s.hr, s.hr2)} />
                 <div className={s.actions}>
-                    <Button appearance="primary">Узнать потробнее</Button>
                     <Button
+                        appearance="primary"
+                        type="button"
+                        aria-label="Узнать потробнее"
+                    >Узнать потробнее</Button>
+                    <Button
+                        type="button"
+                        aria-label="Читать отзывы"
                         appearance="secondary"
                         arrow={!isRewiewOpen ? 'right' : 'down'}
                         onClick={() => setIsRewiewOpen(!isRewiewOpen)}>Читать отзывы</Button>

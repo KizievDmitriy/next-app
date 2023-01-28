@@ -20,6 +20,8 @@ export const BtnUp = ({ ...p }): JSX.Element => {
 
     return (
         <motion.button
+            type="button"
+            aria-label="scroll to top"
             className={s.btn}
             {...p}
             onClick={scrollToTop}

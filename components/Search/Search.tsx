@@ -25,9 +25,10 @@ export const Search = ({ className, ...p }: SearchProps): JSX.Element => {
     };
 
     return (
-        <div
+        <form
             className={cn(className, s.wrapper)}
             {...p}
+            role='search'
         >
             <Input
                 className={s.input}
@@ -37,12 +38,14 @@ export const Search = ({ className, ...p }: SearchProps): JSX.Element => {
                 onKeyDown={() => handleKeyDown}
             />
             <Button
+                type="button"
+                aria-label="искать по сайту"
                 appearance="primary"
                 className={s.btn}
                 onClick={toSearch}
             >
                 <SearchIcon />
             </Button >
-        </div>
+        </form>
     )
 }

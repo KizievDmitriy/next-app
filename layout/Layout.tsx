@@ -12,7 +12,7 @@ const Layout = ({ children }: LayoutProps): JSX.Element => {
         <div className={s.wrapper}>
             <Header className={s.header} />
             <Sidebar className={s.sidebar} />
-            <div className={s.body}>{children}</div>
+            <main className={s.body} role='main'>{children}</main>
             <Footer className={s.footer} />
             <BtnUp />
         </div>
