@@ -14,20 +14,20 @@ import { API } from "../../helpers/api";
 
 export const ReviewForm = ({ productId, className, ...p }: ReviewFormProps): JSX.Element => {
     const { register, control, handleSubmit, formState: { errors }, reset, clearErrors } = useForm<IReviewForm>();
-    const [isSuccess, setIsSutccess] = useState<boolean>(false);
-    const [error, setError] = useState<string>();
+    const [isSuccess, setIsSuccess] = useState<boolean>(false);
+    const [error, setIsError] = useState<string>();
 
     const onSubmit = async (formData: IReviewForm) => {
         try {
             const { data } = await axios.post<IReviewSentResponse>(API.review.createDemo, { ...formData, productId });
             if (data.message) {
-                setIsSutccess(true);
+                setIsSuccess(true);
                 reset();
             } else {
-                setError('Что то пошло не так')
+                setIsError('Что то пошло не так')
             }
         } catch (e) {
-            setError('Что то пошло не так');
+            setIsError(e.message);
         }
     };
 
@@ -51,15 +51,15 @@ export const ReviewForm = ({ productId, className, ...p }: ReviewFormProps): JSX
                     <span>Оценка:</span>
                     <Controller
                         control={control}
-                        name='raiting'
+                        name='rating'
                         rules={{ required: { value: true, message: 'Укажите рейтинг' } }}
                         render={({ field }) => (
                             <Raiting
                                 isEditable
-                                raiting={field.value}
+                                rating={field.value}
                                 ref={field.ref}
-                                setRaiting={field.onChange}
-                                error={errors.raiting}
+                                setRating={field.onChange}
+                                error={errors.rating}
                             />
                         )}
                     />
@@ -75,7 +75,7 @@ export const ReviewForm = ({ productId, className, ...p }: ReviewFormProps): JSX
                 <div className={s.submitWrapper}>
                     <Button
                         appearance="primary"
-                        type="button"
+                        type="submit"
                         aria-label="Отправить"
                         className={cn(className, s.btn)}
                         onClick={() => clearErrors()}
@@ -85,9 +85,12 @@ export const ReviewForm = ({ productId, className, ...p }: ReviewFormProps): JSX
             </div>
             {isSuccess && <div className={s.success}>
                 <b>Ваш отзыв отправлен, он будет опубликован после проверки.</b>
-                <CloseSubmitIcon className={s.close} onClick={() => setIsSutccess(false)} />
+                <CloseSubmitIcon className={s.close} onClick={() => setIsSuccess(false)} />
             </div>}
-            {error && <>{error}</>}
+            {error && <div className={s.error}>
+                <b>{error}</b>
+                <CloseSubmitIcon className={cn(s.close, s.closeErr)} onClick={() => setIsError(undefined)} />
+            </div>}
         </form>
     );
 }

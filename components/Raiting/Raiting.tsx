@@ -6,29 +6,29 @@ import cn from "classnames";
 import StarIcon from "./star.svg";
 import { ForwardedRef, forwardRef, KeyboardEvent, useEffect, useState } from "react"
 
-export const Raiting = forwardRef(({ isEditable = false, error, raiting, setRaiting, children, ...p }: RaitingProps, ref: ForwardedRef<HTMLDivElement>): JSX.Element => {
+export const Raiting = forwardRef(({ isEditable = false, error, rating: rating, setRating, children, ...p }: RaitingProps, ref: ForwardedRef<HTMLDivElement>): JSX.Element => {
     const [raitingArr, setRaitingArr] = useState<JSX.Element[]>(new Array(5).fill(<></>));
 
     useEffect(() => {
-        constructRaiting(raiting);
-    }, [raiting]);
+        constructRaiting(rating);
+    }, [rating]);
 
-    const constructRaiting = (currentRaiting: number) => {
+    const constructRaiting = (currentRating: number) => {
         const updatedArr = raitingArr.map((_r: JSX.Element, i: number) => {
             return (
                 <div key={i}
                     className={
                         cn(s.star, {
-                            [s.filled]: i < currentRaiting,
+                            [s.filled]: i < currentRating,
                             [s.editeble]: isEditable
                         })}
                     onMouseEnter={() => changeDisplay(i + 1)}
-                    onMouseLeave={() => changeDisplay(raiting)}
+                    onMouseLeave={() => changeDisplay(rating)}
                     onClick={() => { onClick(i + 1) }}
                     role={isEditable ? 'slider' : ''}
-                    aria-label={isEditable ? 'Укажите рейтинг кнопкой ентер,для увеличения или уменьшения используйте кнопку таб' : ('рейтинг' + raiting)}
+                    aria-label={isEditable ? 'Укажите рейтинг кнопкой ентер,для увеличения или уменьшения используйте кнопку таб' : ('рейтинг' + rating)}
                     aria-invalid={error ? true : false}
-                    aria-valuenow={raiting}
+                    aria-valuenow={rating}
                     aria-valuemax={5}
                     aria-valuemin={1}
                 >
@@ -52,17 +52,17 @@ export const Raiting = forwardRef(({ isEditable = false, error, raiting, setRait
     }
 
     const onClick = (i: number) => {
-        if (!isEditable || !setRaiting) {
+        if (!isEditable || !setRating) {
             return;
         }
-        setRaiting(i);
+        setRating(i);
     }
 
     const handleSpace = (i: number, e: KeyboardEvent<SVGAElement>) => {
-        if (e.code !== 'Enter' || !setRaiting) {
+        if (e.code !== 'Enter' || !setRating) {
             return;
         }
-        setRaiting(i);
+        setRating(i);
     }
 
     return (

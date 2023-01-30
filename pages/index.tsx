@@ -17,7 +17,7 @@ const montserrat = Montserrat({
 
 
 function Home({ menu }: HomeProps) {
-  const [raiting, setRaiting] = useState<number>(4)
+  const [rating, setRating] = useState<number>(4)
 
   return (
     <>
@@ -31,7 +31,7 @@ function Home({ menu }: HomeProps) {
         <Tag>transparent</Tag>
         <Tag size='m' color='red'>red</Tag>
         <Tag size='m' color='primary'>primary</Tag>
-        <Raiting raiting={raiting} isEditable setRaiting={setRaiting} />
+        <Raiting rating={rating} isEditable setRating={setRating} />
         <Input placeholder='text' />
         <Textarea placeholder='text' />
         <div>

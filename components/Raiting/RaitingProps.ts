@@ -3,7 +3,7 @@ import { FieldError } from "react-hook-form";
 
 export interface RaitingProps extends DetailedHTMLProps<HtmlHTMLAttributes<HTMLDivElement>, HTMLDivElement> {
     isEditable?: boolean;
-    raiting: number;
-    setRaiting?: (raiting: number) => void;
+    rating: number;
+    setRating?: (rating: number) => void;
     error?: FieldError;
 }

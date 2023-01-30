@@ -48,7 +48,7 @@ export const Product = motion(forwardRef(({ product, className, ...p }: ProductP
                     {product.oldPrice && <Tag color="green">{priceRu(product.price - product.oldPrice)}</Tag>}
                 </div>
                 <div className={s.credit}>{priceRu(product.credit)}/<span>мес</span></div>
-                <div className={s.raiting}><Raiting raiting={product.rewiewAvg ?? product.initialRating} /></div>
+                <div className={s.raiting}><Raiting rating={product.rewiewAvg ?? product.initialRating} /></div>
                 <div className={s.tags}>{product.categories.map(c => <Tag className={s.tag} color="transparen" key={c}>{c}</Tag>)}</div>
                 <div className={s.priceTitle}>Цена</div>
                 <div className={s.creditTitle}>Кредит</div>
